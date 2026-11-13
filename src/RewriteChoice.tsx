@@ -1,0 +1,7 @@
+import {contentTypes} from './StudioTools';
+type Obj=Record<string,any>;
+export function RewriteChoice({project,edit,disabled,select}:{project:Obj;edit:(fn:(p:Obj)=>void)=>void;disabled?:boolean;select?:(tab:string)=>void}){
+ const enabled=project.authoring_settings?.promo_mode!=='',mode=project.story_promo?.settings?.mode||'story';
+ const choose=(value:boolean)=>edit(p=>{p.authoring_settings={...p.authoring_settings,promo_mode:value?mode:''}});
+ return <section className="rewrite-choice" aria-label="文案处理方式"><h3>文案处理方式</h3><div className="rewrite-options" role="group" aria-label="是否进行两步改写"><button disabled={disabled} aria-pressed={enabled} onClick={()=>choose(true)}><strong>先做两步改写</strong><small>原文／已确认长文 → 叙事改写 → 画面改写 → 短剧本</small></button><button disabled={disabled} aria-pressed={!enabled} onClick={()=>choose(false)}><strong>直接整理剧本</strong><small>原文／已确认长文 → 短剧本，跳过两步改写</small></button></div><div className="rewrite-basis"><span>内容类型：<b>{contentTypes.find(([v])=>v===mode)?.[1]||mode}</b>{select&&<button onClick={()=>select('brief')}>修改</button>}</span><span>叙事参考：<b>{project.primary_reference?.title||'通用叙事规则'}</b>{select&&<button onClick={()=>select('skills')}>选择案例</button>}</span><span>画面美术：<b>{project.art_references?.applied?'已应用的美术风格':'沿用案例／剧本默认美术'}</b>{select&&<button onClick={()=>select('production')}>选择美术</button>}</span></div><p>{enabled?'第一步借鉴案例的叙事结构与节奏，第二步结合镜头语言和已应用美术组织画面。内容类型统一在“创作设定”中选择。':'自动创作会直接从原文或确认后的扩写稿整理短剧本。案例与美术仍用于后续风格和镜头制作。'}</p></section>;
+}

@@ -1,0 +1,236 @@
+/* Owl workspace design system. Loaded after feature styles. */
+:root,
+:root[data-theme=light] {
+  --wb-bg:#f5f5f7; --wb-panel:#fff; --wb-text:#252631; --wb-muted:#737582;
+  --wb-line:#e6e6ed; --wb-soft:#f5f5f8; --wb-ai:#7154c7; --wb-human:#a66b18; --wb-local:#207e70;
+  --studio-accent:#7355c7; --studio-accent-hover:#6244b5; --studio-tint:#f0ebfa;
+  --studio-hover:#efeff4; --studio-shadow:0 3px 16px #22223804; --studio-sidebar:#fafafb;
+  --line:var(--wb-line); --surface:var(--wb-panel); --text-muted:var(--wb-muted); --accent:var(--studio-accent);
+  background:var(--wb-bg); color:var(--wb-text); font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;
+}
+:root[data-theme=dark] {
+  --wb-bg:#151619; --wb-panel:#1e1f24; --wb-text:#e9e9ef; --wb-muted:#a0a1ae;
+  --wb-line:#32333c; --wb-soft:#25262d; --wb-ai:#b6a1f0; --wb-human:#e1b56b; --wb-local:#79c9b8;
+  --studio-accent:#aa91eb; --studio-accent-hover:#bea9f4; --studio-tint:#322b43;
+  --studio-hover:#2e2f37; --studio-shadow:0 3px 16px #0000000a; --studio-sidebar:#1a1b1f;
+  background:var(--wb-bg); color:var(--wb-text);
+}
+:root[data-theme] body,:root[data-theme] .app,:root[data-theme] .main,:root[data-theme] .work-area {background:var(--wb-bg);color:var(--wb-text)}
+::selection{background:var(--studio-tint);color:var(--wb-text)}
+*{scrollbar-width:thin;scrollbar-color:var(--wb-line) transparent}
+:root[data-theme] :where(button,label.button) {border-color:var(--wb-line);background:var(--wb-panel);color:var(--wb-text);border-radius:9px;font-size:13px;font-weight:500;min-height:34px;box-shadow:none;transition:background .16s,border-color .16s,box-shadow .16s}
+:root[data-theme] button:not(:disabled):hover,:root[data-theme] label.button:hover {background:var(--studio-hover);border-color:color-mix(in srgb,var(--wb-muted) 40%,var(--wb-line))}
+:root[data-theme] button.primary,:root[data-theme] .button.primary {background:var(--studio-accent);border-color:var(--studio-accent);color:#fff}
+:root[data-theme=dark] button.primary {color:#211832}
+:root[data-theme] button.primary:not(:disabled):hover {background:var(--studio-accent-hover);border-color:var(--studio-accent-hover)}
+:root[data-theme] button:disabled {opacity:.42}
+:root[data-theme] :where(input,textarea,select) {background:var(--wb-panel);border-color:var(--wb-line);color:var(--wb-text);border-radius:9px;font-size:13px;padding:10px 12px}
+:root[data-theme] :where(input,textarea,select):focus {border-color:var(--studio-accent);box-shadow:0 0 0 3px var(--studio-tint)}
+:root[data-theme] :where(input,textarea)::placeholder {color:var(--wb-muted)}
+input[type=checkbox],input[type=radio],input[type=range] {accent-color:var(--studio-accent)}
+input[type=range]{padding:0;box-shadow:none!important;cursor:pointer}
+:root[data-theme] :where(h1,h2,h3,h4,strong,summary) {color:var(--wb-text)}
+:root[data-theme] :where(.muted,label,.eyebrow,.sidebar-label,.workspace-kicker) {color:var(--wb-muted)}
+:root[data-theme] a{color:var(--studio-accent)}
+:root[data-theme] .icon {background:transparent;border-color:transparent;min-width:32px;min-height:32px;padding:7px;color:var(--wb-muted)}
+:root[data-theme] :where(.pill,.workspace-chip) {background:var(--wb-soft);color:var(--wb-muted);border:1px solid var(--wb-line);border-radius:7px;font-size:11px;letter-spacing:0}
+:root[data-theme] .note {background:var(--studio-tint);border-color:var(--wb-line);color:var(--wb-text)}
+:root[data-theme] details {border-color:var(--wb-line)}
+:root[data-theme] summary {cursor:pointer;line-height:1.7}
+:root[data-theme] :where(button,a,input,textarea,select,summary,[tabindex]):focus-visible{outline:2px solid var(--studio-accent);outline-offset:3px}
+
+/* Quiet navigation rail. */
+:root[data-theme] .sidebar {width:224px;padding:28px 16px 18px;background:var(--studio-sidebar);border-color:var(--wb-line)}
+.main {margin-left:224px}
+:root[data-theme] .brand {background:transparent;border:0;gap:11px;padding:0 5px;font-size:16px;font-weight:650;letter-spacing:-.4px;min-height:40px}
+.brand small{font-size:8px;letter-spacing:1.6px;margin-top:5px;color:var(--wb-muted)}
+.mark{background:var(--studio-tint);color:var(--studio-accent);width:37px;height:37px;border-radius:11px}
+:root[data-theme] .new-project{background:var(--wb-panel);border-color:var(--wb-line);box-shadow:var(--studio-shadow);margin:30px 0 27px;height:42px;justify-content:center;gap:10px}
+.sidebar-label{font-size:10px;letter-spacing:.7px;padding:0 10px;margin-bottom:12px}
+.sidebar-label>span{font-variant-numeric:tabular-nums;color:var(--wb-muted)}
+.sidebar nav{padding-bottom:18px}
+:root[data-theme] .project-link {border:0;background:transparent;padding:12px 9px;margin:2px 0;gap:10px;min-height:59px;border-radius:9px}
+:root[data-theme] .project-link.selected{background:var(--studio-tint);box-shadow:none;color:var(--studio-accent)}
+.project-link span{font-size:12px}.project-link small{font-size:10px;color:var(--wb-muted);margin-top:5px}
+.project-icon{color:var(--wb-muted)}.project-link.selected .project-icon{color:var(--studio-accent)}
+:root[data-theme] .project-manage{background:transparent}
+.sidebar-bottom{border-color:var(--wb-line);padding:16px 4px 0}
+:root[data-theme] .sidebar-bottom>button{border:0;background:transparent;color:var(--wb-muted);font-size:12px;padding:9px 8px;min-height:36px}
+.sidebar-bottom .theme-control{display:flex;justify-content:space-between;gap:8px;margin:0 0 12px;padding:0 5px 14px;border-bottom:1px solid var(--wb-line);font-size:12px}
+.theme-control>span{display:flex;align-items:center;gap:8px;white-space:nowrap}
+:root[data-theme] .theme-control select{font-size:11px;width:105px;padding:7px 8px;background:var(--wb-panel);margin:0;min-height:32px}
+
+/* Project chrome and a single primary navigation row. */
+:root[data-theme] .main>header{min-height:66px;height:auto;padding:14px 30px;background:var(--studio-sidebar);border-color:var(--wb-line);gap:15px}
+.breadcrumb{color:var(--wb-muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:70px;flex:1}
+.breadcrumb span{margin:0 9px;color:var(--wb-muted)}
+.header-actions{gap:7px;flex-shrink:0}.header-actions>button{font-size:12px;padding:7px 10px}
+.header-actions>.icon{padding:7px}.save-status{font-size:10px;color:var(--wb-muted);white-space:nowrap;margin:0 3px}
+.header-actions .connection{font-size:0;margin:0 3px}.header-actions .connection>span{width:7px;height:7px;box-shadow:0 0 0 4px var(--wb-soft)}
+.workspace{min-height:calc(100vh - 66px)}
+.app .work-area,.app .shot-workspace .work-area{padding:32px 34px 60px;max-width:1680px;margin-inline:auto;width:100%}
+:root[data-theme] .project-heading{background:transparent;border:0;margin-bottom:20px;align-items:center}
+.project-heading .eyebrow{font-size:9px;letter-spacing:2.5px}.project-heading h1{font-size:27px;font-weight:650;line-height:1.5;letter-spacing:-.7px;margin-top:5px;overflow-wrap:anywhere}
+.workspace-primary-nav{gap:7px;border-bottom:1px solid var(--wb-line);margin:0 0 22px;padding-bottom:0;flex-wrap:nowrap;overflow-x:auto}
+:root[data-theme] .workspace-primary-nav button{gap:8px;border:0;border-radius:0;border-bottom:2px solid transparent;background:transparent;color:var(--wb-muted);padding:12px 16px;min-height:44px;white-space:nowrap;font-size:13px}
+:root[data-theme] .workspace-primary-nav button.active{background:transparent;color:var(--studio-accent);border-color:var(--studio-accent)}
+:root[data-theme] .workspace-primary-nav button:hover{background:var(--wb-soft)}
+.workspace-subnav{margin:0 0 24px;padding:0;border:0}
+.workspace-subnav>summary{display:list-item;font-size:11px;color:var(--wb-muted)!important;padding:0 2px}
+.workspace-subnav[open]{padding:10px 14px;border:1px solid var(--wb-line);border-radius:10px;background:var(--wb-panel)}
+
+/* Connected production steps, with optional detail. */
+.flow-progress{position:relative;top:auto;z-index:1;margin:0 0 16px;padding:18px 22px;border-radius:13px;background:var(--wb-panel);box-shadow:var(--studio-shadow)}
+.flow-progress .wb-heading strong{font-size:12px;font-weight:600}.flow-count{font-size:11px;color:var(--wb-muted)}
+.flow-progress .wb-heading button{background:transparent!important;border:0;color:var(--wb-muted)!important;font-size:10px;padding:3px 6px;min-height:24px}
+.flow-nodes{gap:0;margin-top:18px;grid-template-columns:repeat(7,minmax(0,1fr))}
+:root[data-theme] .flow-node{position:relative;display:grid;grid-template-columns:27px minmax(0,1fr);column-gap:9px;row-gap:4px;border:0;border-radius:8px;padding:9px 6px;background:transparent;text-align:left;align-items:center;justify-content:start;min-height:58px}
+.flow-node:after{content:'';position:absolute;right:2px;top:23px;width:12px;height:1px;background:var(--wb-line)}
+.flow-node:last-child:after{display:none}
+.flow-index{display:grid;place-items:center;width:27px;height:27px;grid-row:1/3;background:var(--wb-soft);border:1px solid var(--wb-line);border-radius:50%;font-size:10px;color:var(--wb-muted);font-variant-numeric:tabular-nums}
+.flow-node strong{font-size:12px;font-weight:550}.flow-node small{font-size:9px;line-height:1.4;grid-column:2;color:var(--wb-muted);white-space:nowrap}
+.flow-node.state-adopted .flow-index{color:var(--wb-local);background:color-mix(in srgb,var(--wb-local) 10%,var(--wb-panel));border-color:color-mix(in srgb,var(--wb-local) 28%,var(--wb-line))}
+.flow-node.state-review .flow-index{color:var(--wb-human);background:color-mix(in srgb,var(--wb-human) 10%,var(--wb-panel));border-color:var(--wb-human)}
+.flow-node.state-partial .flow-index{color:var(--wb-ai);background:var(--studio-tint);border-color:var(--wb-ai)}
+.flow-node .work-tag{grid-column:1/3;justify-self:start;margin-top:5px;font-size:9px}
+.flow-legend{padding-top:14px;border-top:1px solid var(--wb-line);margin-top:14px}.flow-legend p{font-size:11px;line-height:1.8}
+.work-tag{font-size:10px;border:0;border-radius:5px;padding:4px 7px;line-height:1.4;background:var(--wb-soft)}
+.work-tag.ai{color:var(--wb-ai);background:color-mix(in srgb,var(--wb-ai) 9%,var(--wb-panel))}
+.work-tag.human{color:var(--wb-human);background:color-mix(in srgb,var(--wb-human) 9%,var(--wb-panel))}
+.work-tag.local{color:var(--wb-local);background:color-mix(in srgb,var(--wb-local) 9%,var(--wb-panel))}
+.work-tag.ai_local{color:var(--wb-ai);border:1px solid var(--wb-local)}
+
+/* Overview: summary metrics, screening area, and review station. */
+.wb-page{gap:22px}.wb-heading{gap:12px}.wb-heading h2{font-size:17px;font-weight:650;letter-spacing:-.3px}.wb-heading h3{font-size:15px;font-weight:600;margin:0}
+.wb-overview-title{align-items:center;margin:0}.wb-overview-title .muted{margin:6px 0 0;font-size:12px}
+.wb-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+:root[data-theme] .wb-stat{display:flex;flex-direction:column;align-items:stretch;gap:18px;padding:18px 20px;border:1px solid var(--wb-line);border-radius:12px;background:var(--wb-panel);text-align:left;box-shadow:var(--studio-shadow)}
+.wb-stat-top{display:flex;align-items:center;justify-content:space-between;color:var(--wb-muted);font-size:11px}.wb-stat-top svg{color:var(--studio-accent);opacity:.8}
+.wb-stat-value{font-size:30px;font-weight:600;line-height:1;letter-spacing:-1px;font-variant-numeric:tabular-nums}.wb-stat-value small{font-size:11px;letter-spacing:0;font-weight:400;color:var(--wb-muted);margin-left:9px}
+.wb-overview-grid{display:grid;grid-template-columns:minmax(0,1fr) 270px;align-items:start;gap:20px}
+:root[data-theme] .panel{background:var(--wb-panel);color:var(--wb-text);border-color:var(--wb-line);box-shadow:var(--studio-shadow);border-radius:13px}
+.work-area>.panel,.wb-page .panel{padding:22px;border:1px solid var(--wb-line);margin:0;min-width:0}
+.wb-overview-grid>.wb-animatic{padding:20px}
+.wb-animatic .wb-heading h2{font-size:15px}
+.animatic-stage{aspect-ratio:16/9;width:100%;max-height:none;margin:18px 0 14px;border-radius:9px;background:#0e0f12;border:1px solid #ffffff0a}
+.animatic-stage img{display:block}.animatic-placeholder{font-size:12px;background:radial-gradient(ellipse at center,#252630,#121317);color:#9899a9}
+.animatic-caption{padding:38px 16px 14px;font-size:11px;line-height:1.7;pointer-events:none;background:linear-gradient(transparent,#000c)}
+.animatic-shot-label{display:block;font-size:9px;font-weight:600;letter-spacing:2px;color:#c4b8e4;margin-bottom:5px}
+.animatic-description{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;pointer-events:auto}
+.animatic-caption small{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;font-size:10px;color:#ddd}
+.wb-animatic>.row{font-size:10px;color:var(--wb-muted);gap:8px}.wb-animatic>.row button{font-size:11px;padding:7px 9px;min-height:31px}
+.wb-animatic .inline-check{font-size:10px}.wb-animatic>input[type=range]{margin:14px 0 6px;height:4px}
+.animatic-strip{gap:7px;margin:12px 0 18px;padding-bottom:5px}.animatic-strip>div{min-width:82px;background:var(--wb-soft);padding:5px;border-color:var(--wb-line);border-radius:7px}.animatic-strip>div.active{background:var(--studio-tint);border-color:var(--studio-accent)}
+.animatic-strip>div>button{width:100%;background:transparent!important;border:0;min-height:24px;font-size:10px}
+.animatic-strip .row{gap:3px;justify-content:center}.animatic-strip .row>button{font-size:10px;padding:1px 8px;min-height:21px;flex:1}
+.wb-animatic>.row:last-child{border-top:1px solid var(--wb-line);padding-top:15px}
+.wb-identity{display:grid;justify-items:start;gap:12px}.wb-identity h3{margin:0;font-size:16px}
+
+
+
+
+.wb-help{width:16px;height:16px;font-size:10px;flex-shrink:0;vertical-align:middle}.wb-help>span{max-width:min(280px,75vw);box-shadow:0 8px 32px #0002}
+.wb-shots-panel .wb-heading>span{font-size:11px;color:var(--wb-muted)}.wb-shot-grid{grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:16px}
+.wb-shot{border-radius:11px;box-shadow:none;transition:border-color .15s}.wb-shot:hover{border-color:color-mix(in srgb,var(--studio-accent) 45%,var(--wb-line))}
+:root[data-theme] .wb-shot-image{border:0;border-radius:0;background:var(--wb-soft);padding:0;display:block;overflow:hidden;position:relative}
+.wb-shot-image img{display:block}.shot-empty{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;height:100%;font-size:11px!important}
+.wb-shot-body{padding:16px;gap:12px}.wb-shot-body .wb-heading strong{display:flex;gap:8px;align-items:center;font-size:12px}.shot-number{font-size:9px;padding:4px 6px;border:1px solid var(--wb-line);border-radius:5px;color:var(--wb-muted);font-weight:500}
+.wb-shot-body>p{font-size:11px;line-height:1.85;min-height:40px}.wb-shot-body>small{font-size:10px;line-height:1.6}.wb-mini-frames{gap:7px}.wb-mini-frames>span{padding:3px 7px;border-radius:4px;background:var(--wb-soft);font-size:9px}
+.wb-shot-body details{padding-top:12px;margin:0;font-size:11px}.wb-shot-body summary{font-size:11px}.wb-shot-body button{font-size:10px;padding:7px 9px;min-height:30px}.wb-shot-body>.row{gap:6px}
+.wb-calls{padding:17px 22px!important}.wb-calls>summary{font-size:12px}.wb-calls>summary .wb-help{margin-left:5px}.wb-call-list{font-size:12px}.wb-issue{font-size:12px}
+
+/* Shared editor surfaces, including legacy feature panels. */
+:root[data-theme] :where(.modal,.h3-studio-dialog,.authoring-stage,.authoring-hero,.authoring-stage details,.authoring-stage .document,.creative-skills,.asset-card,.shot-card,.frame-studio,.h3-step,.performance,.h3-setup-shot,.task-queue,.creation-card,.assistant-panel,.agent-panel,.workflow-nav) {background:var(--wb-panel);color:var(--wb-text);border-color:var(--wb-line)}
+:root[data-theme] :where(.authoring-path button,.seedance-shot-table th,.seedance-shot-table tbody tr:nth-child(even),.seedance-shot-prompt,.five-s-heading,.three-frame-row,.three-frame-card-heading,.stage-number,.video-version,.workflow-row button,.workflow-group,.mode-tabs .active,.speech-shot-card) {background:var(--wb-soft);color:var(--wb-text);border-color:var(--wb-line)}
+:root[data-theme] :where(.authoring-path strong,.authoring-stage summary,.five-s-heading h3,.workspace-reference,.recovery-status,.authoring-expansion small,.stage-empty,.authoring-path small,.project-link small,.seedance-shot-prompt,.shot-prompt-excerpt,.shot-cell-empty){color:var(--wb-muted)}
+:root[data-theme] :where(.authoring-path .is-current,.workflow-row button.active){background:var(--studio-tint);border-color:var(--studio-accent);box-shadow:none}
+:root[data-theme] .authoring-path .is-current>span{background:var(--studio-accent);color:var(--wb-panel)}
+.authoring-stage .section-title{margin-bottom:16px}.authoring-stage .section-title h3{font-size:14px}.authoring-stage .section-title button{font-size:11px}
+:root[data-theme] .authoring-path button>span{background:var(--wb-panel);color:var(--studio-accent)}
+:root[data-theme] .authoring-path .is-done>span{background:color-mix(in srgb,var(--wb-local) 12%,var(--wb-panel));color:var(--wb-local)}
+:root[data-theme] .authoring-hero .note{background:var(--wb-soft);border-color:var(--wb-line);color:var(--wb-muted)}
+:root[data-theme] .creation-card{box-shadow:var(--studio-shadow)}.create-page{padding-top:64px}.intro h1{font-size:42px;letter-spacing:-1px}.intro h1 span{color:var(--studio-accent)}.intro p{color:var(--wb-muted)}
+:root[data-theme] .workspace .agent-launcher{background:var(--wb-panel);color:var(--wb-text);border:1px solid var(--wb-line);border-radius:12px;box-shadow:0 5px 22px #0001;font-size:12px;padding:11px 15px;right:22px;bottom:20px}
+:root[data-theme] .modal{box-shadow:0 24px 100px #0004}.modal-backdrop{backdrop-filter:blur(5px)}
+.flow-progress:has(.flow-legend){max-height:none;overflow:visible}
+
+@media(min-width:1600px){.wb-overview-grid{grid-template-columns:minmax(0,1fr) 310px}.wb-shot-grid{grid-template-columns:repeat(auto-fill,minmax(275px,1fr))}}
+@media(max-width:1250px){
+  .sidebar{width:204px!important}.main{margin-left:204px}.app .work-area,.app .shot-workspace .work-area{padding:26px 24px 50px}
+  .header-actions{gap:4px}.header-actions>button{padding:7px}.main>header{padding:12px 24px!important}.save-status{display:none}
+  .wb-overview-grid{grid-template-columns:minmax(0,1fr) 245px;gap:16px}.flow-node:after{display:none}
+  .flow-node{column-gap:6px!important}.flow-node small{font-size:8px}.flow-progress{padding:16px}.flow-nodes{margin-top:13px}
+}
+@media(max-width:1050px){
+  .wb-overview-grid{grid-template-columns:minmax(0,1fr)}.wb-stats{gap:10px}.wb-stat{padding:15px!important}
+  .header-actions>.icon{display:none}.header-actions>.connection{display:none}.flow-count{display:none}
+  .flow-node{display:flex!important;flex-direction:column;align-items:center!important;text-align:center!important;gap:6px!important;padding:6px 2px!important}.flow-node small{font-size:9px}.flow-node .work-tag{font-size:8px}
+}
+@media(max-width:760px){
+  :root[data-theme] .sidebar{display:none;width:235px!important}.main{margin-left:0}.mobile-menu{display:inline-flex!important}
+  :root[data-theme] .sidebar.mobile-open{display:flex;top:62px;box-shadow:12px 0 50px #0003;z-index:8}
+  .main>header{height:62px!important;min-height:62px;padding:10px 16px!important}.app .work-area,.app .shot-workspace .work-area{padding:24px 18px 70px}
+  .header-actions>.icon{display:inline-flex}.header-actions>button[title="版本历史"],.header-actions>button[title="加载项目最新版本"],.header-actions>button[title="刷新连接"],.header-actions>button[aria-label="撤销"],.header-actions>button[aria-label="重做"]{display:none}
+  .header-actions>button[title="手动保存当前项目"],.header-actions>button.primary{font-size:0;gap:0;padding:8px}
+  .project-heading h1{font-size:23px}.workspace-primary-nav{gap:3px}.workspace-primary-nav button{padding:11px 12px!important;font-size:12px!important}
+  .wb-overview-title{align-items:flex-start}.wb-overview-title>.row button{font-size:11px;padding:8px 10px}.wb-overview-title h2{font-size:16px}
+}
+@media(max-width:540px){
+  .wb-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.wb-stat{gap:12px!important}.wb-stat-value{font-size:27px}
+  .wb-page{gap:18px}.wb-overview-title{flex-direction:column;gap:14px}.wb-overview-title>.row{width:100%}.wb-overview-title>.row button{flex:1}
+  .flow-progress{padding:14px 10px}.flow-nodes{display:flex;overflow-x:auto;gap:4px;padding-bottom:7px}.flow-node{min-width:66px!important;flex:1;flex-shrink:0}.flow-node strong{font-size:11px}.flow-node small{font-size:8px}
+  .workspace-primary-nav{justify-content:space-between}.workspace-primary-nav button{padding:10px 8px!important;gap:5px!important;font-size:11px!important}.workspace-primary-nav button svg{width:13px}
+  .project-heading{gap:10px;align-items:flex-start}.project-heading h1{font-size:22px}.project-heading>.pill{font-size:9px;padding:5px 6px;margin-top:24px;max-width:115px;overflow:hidden;text-overflow:ellipsis}
+  .wb-page .panel{padding:17px}.wb-shot-grid{grid-template-columns:minmax(0,1fr)}.wb-animatic .row:last-child button{flex:1}.wb-animatic .row:last-child .work-tag{display:none}
+  .breadcrumb{font-size:10px}.header-actions{gap:3px}.header-actions>button{font-size:11px}.header-actions>button[title="项目管理"]{display:none}
+  .animatic-description{-webkit-line-clamp:1}.animatic-caption small{display:none}.animatic-caption{padding:24px 12px 10px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+/* Body copy remains readable at ordinary desktop scale. */
+.wb-stat-top{font-size:12px}.wb-stat-value small{font-size:12px}
+.wb-shot-body>p{font-size:12px}.wb-shot-body>small{font-size:11px}.wb-shot-body button{font-size:11px}
+
+.flow-node small{font-size:10px}.flow-count{font-size:12px}.workspace-subnav>summary{font-size:12px}
+.wb-animatic>.row{font-size:11px}.wb-animatic>.row button{font-size:12px}.wb-animatic .inline-check{font-size:11px}
+.work-area>.authoring-hero,.work-area>.authoring-results{margin-bottom:20px}
+@media(max-width:1050px){.flow-node small{font-size:9px}}
+@media(max-width:540px){.flow-node small{font-size:8px}}
+
+/* Login uses the same theme as the workspace, including before authentication. */
+:root[data-theme] .login-page{background:radial-gradient(ellipse at 50% 8%,var(--studio-tint),var(--wb-bg) 65%);color:var(--wb-text);padding:24px 0}
+:root[data-theme] .login-card{background:var(--wb-panel);border-color:var(--wb-line);box-shadow:0 24px 80px #00000015;color:var(--wb-text)}
+:root[data-theme] .login-card h1{color:var(--wb-text);font-weight:650;line-height:1.5}
+:root[data-theme] .login-card :where(p,small,label,.eyebrow){color:var(--wb-muted)}
+:root[data-theme] .login-card input{background:var(--wb-soft);color:var(--wb-text);border-color:var(--wb-line)}
+:root[data-theme] .login-card input::placeholder{color:var(--wb-muted)}
+:root[data-theme] .login-card .mark{background:var(--studio-tint);color:var(--studio-accent)}
+
+/* Persistent desktop queue; narrow screens retain the header's task dialog. */
+.app .workspace{--task-panel-width:286px}
+.app .work-area{container-name:work-surface;container-type:inline-size}
+:root[data-theme] .global-task-panel{display:block;flex:0 0 var(--task-panel-width);width:var(--task-panel-width);height:calc(100dvh - 66px);position:sticky;top:0;align-self:flex-start;padding:22px 15px;background:var(--studio-sidebar);border-left:1px solid var(--wb-line);overflow-y:auto;overscroll-behavior:contain}
+.task-panel-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:10px}.task-panel-heading h2{font-size:15px;font-weight:650}.task-panel-heading button{font-size:11px;padding:5px 8px;min-height:28px}
+:root[data-theme] .global-task-panel .global-task-list{margin:0;background:transparent}
+:root[data-theme] :where(.global-task-panel,.queue-modal) :where(.queue-controller,.task,.queue-resource-heading){background:var(--wb-panel);border-color:var(--wb-line);color:var(--wb-text)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) :where(.queue-heading strong,.task-heading strong,.task-target){color:var(--wb-text)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) :where(.queue-heading small,.queue-actions small,.queue-empty,.queue-controller small,.task p,.task small,.task-engine,.task-times,.task-project,.task-footer>small){color:var(--wb-muted)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .global-task-list .task :where(p,.task-project,.task-engine,.task-times,.task-footer>small,.task-progress small){color:var(--wb-muted)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .queue-resource-group{border-color:var(--wb-line)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .queue-resource-group.ai .queue-resource-heading strong{color:var(--wb-ai)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .queue-resource-group.comfy .queue-resource-heading strong{color:var(--wb-local)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .queue-resource-group.local .queue-resource-heading strong{color:var(--wb-human)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .queue-view-tabs button{background:transparent;border-color:var(--wb-line);color:var(--wb-muted)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .queue-view-tabs button.active{background:var(--studio-tint);color:var(--studio-accent);border-color:var(--studio-accent)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .task.running{border-left:3px solid var(--wb-ai)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .task[data-engine=comfy].running{border-left-color:var(--wb-local)}
+:root[data-theme] :where(.global-task-panel,.queue-modal) .task.failed{border-color:#c56d76}
+.global-task-panel .queue-heading{flex-wrap:wrap}.global-task-panel .queue-heading strong{font-size:12px}.global-task-panel .queue-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin:12px 0}.global-task-panel .queue-actions small{font-size:10px}.global-task-panel .queue-actions button{font-size:10px;padding:4px 6px;min-height:25px}
+:root[data-theme] .workspace .agent-launcher{right:calc(var(--task-panel-width) + 18px)}
+.workspace>.agent-panel.agent-mobile-open{position:fixed;inset:80px calc(var(--task-panel-width) + 16px) 16px auto;width:min(390px,calc(100vw - var(--task-panel-width) - 32px));height:auto;z-index:6;border:1px solid var(--wb-line);border-radius:12px;box-shadow:0 15px 70px #0004}
+@container work-surface (max-width:850px){.wb-overview-grid{grid-template-columns:minmax(0,1fr)}.wb-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.project-heading h1{font-size:23px}.workspace-primary-nav button{padding:11px 12px!important}.production-flow-heading .flow-count{display:none}}
+@container work-surface (max-width:550px){.wb-overview-title{flex-direction:column;align-items:flex-start}.project-heading{flex-wrap:wrap}.project-heading>.pill{margin-top:0}.workspace-primary-nav button{padding:10px 8px!important}.wb-shot-grid{grid-template-columns:minmax(0,1fr)}}
+@media(min-width:901px) and (max-width:1250px){.app .workspace{--task-panel-width:262px}.app .work-area{padding-inline:20px}}
+@media(max-width:900px){.app .workspace{--task-panel-width:0px}:root[data-theme] .global-task-panel{display:none}:root[data-theme] .workspace .agent-launcher{right:18px}.workspace>.agent-panel.agent-mobile-open{inset:74px 12px 12px auto;width:min(390px,calc(100vw - 24px))}}
+
+.wb-identity p{margin:0}.audio-workspace-actions,.audio-extra-workflows{margin-block:16px}.audio-workspace-actions .tool-launch{width:auto}

@@ -1,0 +1,36 @@
+import React from 'react';
+type Obj=Record<string,any>;
+export const scriptTaskNames:Obj={auto:'沿用当前处理方式',adapt:'忠实剧本化',continue:'续写 · 保留开头补全后续',expand:'扩写 · 从创意发展完整故事',condense:'缩编 · 保留主线压缩内容',restructure:'重编 · 重组结构与信息揭示',perspective:'视角改编 · 从指定人物讲述'};
+const descriptions:Obj={auto:'沿用原文直用、忠实剧本化或现有AI编排。需要明确控制改写范围时，选择具体任务。',adapt:'保留人物、事件、原句对白、银幕顺序和结局，只进行技术性剧本化。',continue:'已有开头先忠实剧本化，再补充后续发展；不得为了反转改掉开头事实。',expand:'围绕给定创意建立人物目标、冲突和结局；新增支线必须服务主线。',condense:'先列保留、合并和省略方案，保护因果、动机与必要线索；不能靠加速表演压缩。',restructure:'先列不可改的锚点，再设计结构、伏笔和信息揭示。原文时代仍然保留，除非明确允许世界观改编。',perspective:'保留客观事件，按指定人物的目击、听闻或推断讲述；不得赋予角色全知能力。'};
+export function invalidateScriptTask(next:Obj,previous:Obj){
+ if(['story','parameters','duration','script_mode','story_policy','script_workflow','video_brief','script_task','script_task_settings','creative_skills'].some(k=>JSON.stringify(next[k])!==JSON.stringify(previous[k])))delete next.documents.script_task_plan;
+ if(['script_task','script_task_settings','creative_skills'].some(k=>JSON.stringify(next[k])!==JSON.stringify(previous[k]))){next.script_needs_rewrite=true;next.script_confirmed=false;next.native_storyboard_current=false;next.confirmed=false;delete next.documents.script_consistency;}
+ if(next.documents.script!==previous.documents.script)for(const key of ['script_task_source_map','script_task_review','script_duration_advice','script_task_used'])delete next.documents[key];
+}
+export function ScriptTaskChoice({project,edit}:{project:Obj;edit:(fn:(p:any)=>void)=>void}){
+ const selected=project.script_task||'auto',settings=project.script_task_settings||{};
+ const change=(key:string,value:any)=>edit(p=>{p.script_task_settings={...(p.script_task_settings||{}),[key]:value}});
+ return <div className="script-task-choice"><label>本次剧本任务<select aria-label="本次剧本任务" value={selected} onChange={e=>edit(p=>{p.script_task=e.target.value;if(e.target.value!=='auto'){p.story_policy=e.target.value==='adapt'?'screenplay':'creative';p.script_task_settings={...(p.script_task_settings||{}),preserve_dialogue:true,preserve_ending:['adapt','continue','condense','perspective'].includes(e.target.value)};if(e.target.value==='adapt'&&p.video_brief?.allow_world_change)p.video_brief.allow_world_change=false;}p.script_workflow='director'})}>{Object.entries(scriptTaskNames).map(([id,name])=><option value={id} key={id}>{name}</option>)}</select></label><p className="muted">{descriptions[selected]}选择具体任务会同步切换对应的故事处理方式；剧本模式仍用于题材与结构风格。</p>
+ {selected!=='auto'&&<><label>任务目标与创作要求<textarea aria-label="剧本任务目标" rows={3} value={settings.requirements||''} placeholder="例如：续写到真相揭晓；保持古风悬疑，结局温暖。" onChange={e=>change('requirements',e.target.value)}/></label><label>必须保留的情节、人物与设定<textarea aria-label="剧本必须保留的内容" rows={2} value={settings.must_keep||''} placeholder="写清不可改动的事件、人物关系、重要伏笔或结局。" onChange={e=>change('must_keep',e.target.value)}/></label>
+ {selected==='perspective'&&<label>视角人物或叙述立场<input aria-label="视角人物" value={settings.viewpoint||''} placeholder="例如：卫千年；仅讲述他亲历或合理获知的内容" onChange={e=>change('viewpoint',e.target.value)}/></label>}
+ <label className="checkbox"><input type="checkbox" checked={['adapt','continue'].includes(selected)||settings.preserve_dialogue!==false} disabled={['adapt','continue'].includes(selected)} onChange={e=>change('preserve_dialogue',e.target.checked)}/>保留留存来源中的原句对白与引文</label>
+ {['condense','restructure'].includes(selected)&&<label className="checkbox"><input type="checkbox" checked={settings.preserve_ending??(selected==='condense')} onChange={e=>change('preserve_ending',e.target.checked)}/>保留原结局</label>}
+ </>}
+ </div>;
+}
+export function ScriptTaskPlan({project,busy,job}:{project:Obj;busy:boolean;job:(kind:string,target?:string,options?:Obj)=>void}){
+ const selected=project.script_task||'auto',record=project.documents.script_task_plan,plan=record?.task===selected?record.plan:null;
+ if(['auto','adapt'].includes(selected))return null;
+ const ready=!busy&&!!project.story?.trim()&&(selected!=='perspective'||!!project.script_task_settings?.viewpoint?.trim());
+ return <section className="script-task-plan"><div className="row wrap"><button disabled={!ready} onClick={()=>job('script',undefined,{plan_only:true})}><span>{plan?'重新生成改编提纲':'先生成改编提纲'}</span></button><small className="muted">提纲只规划故事场次，保留已有正文。采用后才编写新正文。</small></div>
+ {plan&&<><p><strong>{scriptTaskNames[selected]}提纲：</strong>{plan.summary}</p><p className="muted">目标 {project.duration} 秒 · 自然估计 {plan.estimated_seconds} 秒（不是实测成片时长）</p><div className="script-plan-table"><table><thead><tr><th>银幕顺序</th><th>地点与故事时间</th><th>目标与冲突</th><th>行动与结果</th><th>估计时长</th></tr></thead><tbody>{plan.scenes.map((scene:Obj,i:number)=><tr key={scene.id}><td>第{i+1}场<br/><small>{scene.origin==='authorized'?'授权新增':'原文依据'}</small></td><td>{scene.location} · {scene.time}<br/><small>{scene.story_time}</small></td><td>{scene.goal}<br/><small>{scene.obstacle}</small></td><td>{scene.action}<br/><small>{scene.result}</small>{selected==='perspective'&&<p className="muted">知识来源：{scene.knowledge}</p>}</td><td>{scene.estimated_seconds} 秒<br/><small>{scene.seconds_basis}</small></td></tr>)}</tbody></table></div>
+ {!!plan.pending_questions?.length&&<div className="note"><strong>需先解决的提纲问题</strong>{plan.pending_questions.map((q:string,i:number)=><p key={i}>{q}</p>)}<small>在任务要求中补充决定，再重新生成提纲。</small></div>}
+ {plan.duration_advice&&<div className="note"><strong>时长取舍建议</strong><p>{plan.duration_advice}</p><small>不会自动延长项目或加速表演；可修改时长或要求后重新生成提纲。</small></div>}
+ <details><summary>来源处理与审查建议</summary>{plan.source_map.map((row:Obj)=><p key={row.source_id}>{row.source_id} · {({retain:'保留',merge:'合并',omit:'按任务省略'} as Obj)[row.status]}：{row.reason}</p>)}{plan.review_notes?.map((note:string,i:number)=><p key={i}>{note}</p>)}</details>
+ <button className="primary" disabled={!ready||!!plan.pending_questions?.length} onClick={()=>job('script',undefined,{approved_plan:record.approval_token})}>{project.script_generation?.mode==='task'&&project.script_generation?.status!=='completed'?'继续编写未完成场次':'采用提纲并编写剧本'}</button>{project.script_generation?.mode==='task'&&<div className="note"><strong>剧本草稿 · 已保存 {project.script_generation.completed_units||0}/{project.script_generation.total_units||0} 场</strong><p>{project.script_generation.message}</p><details><summary>查看已保存草稿</summary><pre className="document">{project.script_generation.draft_script}</pre></details></div>}</>}
+ </section>;
+}
+export function ScriptTaskResults({project}:{project:Obj}){
+ const docs=project.documents;
+ return <>{docs.script_task_source_map?.length>0&&<details><summary>本次改编的来源对应 · {docs.script_task_source_map.length} 段</summary>{docs.script_task_source_map.map((row:Obj)=><div className="adaptation-entry" key={row.source_id}><strong>{row.source_id} · {({retain:'保留',merge:'合并',omit:'省略'} as Obj)[row.status]}</strong><p className="muted">原文：{row.source_quote}</p>{row.script_excerpt&&<p>正文：{row.script_excerpt}</p>}<small>{row.reason}</small></div>)}</details>}{docs.script_duration_advice&&<div className="note"><strong>剧本时长建议</strong><p>{docs.script_duration_advice}</p></div>}{docs.script_task_review?.length>0&&<details><summary>本次剧本审查建议</summary>{docs.script_task_review.map((n:string,i:number)=><p key={i}>{n}</p>)}</details>}</>;
+}

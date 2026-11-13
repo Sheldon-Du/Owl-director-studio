@@ -1,0 +1,434 @@
+{
+  "review": "2026-10-15",
+  "templates": {
+    "seedance-template-timeline-shot-script": {
+      "title": "逐秒时间轴分镜脚本",
+      "version": "f15f185103a9",
+      "source_sha256": "2d42bfc06144316bc2b4b28c59eaaf0d383f234efbd4b3f58bf2df163d839024",
+      "narrative": [
+        "每段围绕一个可见主要动作推进，交接结束状态，下一段从上一段结果继续。"
+      ],
+      "camera": [
+        "按动作需要分段标注机位与运动，景别服务本段事件；时长服从实测对白和定稿时间轴。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-character-reference-lock": {
+      "title": "参考图身份锁定",
+      "version": "25dc0373a2ea",
+      "source_sha256": "7d04d6c52bdcd88e9fc13862e9e2a75df846cf5b2f7a4fa85c80cf4d5ddeafce",
+      "narrative": [],
+      "camera": [
+        "区分身份参考与构图参考；仅继承各自职责，不照搬参考图姿势、背景和原始光线；遮挡和转头时保持人物一致。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-handheld-ugc-vlog": {
+      "title": "手持 UGC vlog",
+      "version": "5ce438d8bef8",
+      "source_sha256": "9744788d5aef20efedae26d07165125c17186dfc5e93526a7b45d22c01ac49ad",
+      "narrative": [
+        "用日常小事和身体状态的连续变化推进，台词随正在发生的动作出现。"
+      ],
+      "camera": [
+        "自然手持漂移、轻微对焦与曝光变化；保持拍摄者视角，避免无理由切换第三方机位。"
+      ],
+      "art": {
+        "style": "手机实拍与生活记录质感，不使用过度磨皮或商业棚拍美化。",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-pov-continuous-take": {
+      "title": "第一人称一镜到底",
+      "version": "5d47ddbab420",
+      "source_sha256": "f8248390546af7424a0c4f8e49c666c08e925ecf3f52e26bb4355b6890eefd03",
+      "narrative": [
+        "以操作者亲历的信息推进，观众只见其当下所见，不额外加入旁观者知识。"
+      ],
+      "camera": [
+        "明确机位挂载高度，运动跟随身体；镜头开始已有可见活动，保持空间连续；只有明确切点才剪切。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-ugc-creator-review": {
+      "title": "UGC 口播测评带货",
+      "version": "caa6085d840b",
+      "source_sha256": "a22a9767ca9622d91392d7cee69e8f458b43cf81322e8b81050962481cef22c9",
+      "narrative": [
+        "按开箱、展示细节、佩戴或使用、查看效果、收尾组织内容。",
+        "口播采用第一人称体验式表达，不用夸张广告腔；每句台词对应当下操作；体验结论必须有用户资料依据。",
+        "收尾可先单独展示产品，再回到创作者持物看镜头；不能替换用户指定结尾。"
+      ],
+      "camera": [
+        "手持手机式生活拍摄；细节特写围绕实际操作；步行与精细产品操作分开编排。",
+        "收尾可让产品单独入画，再回到创作者拿着产品看镜头；不覆盖用户指定镜头。"
+      ],
+      "art": {
+        "style": "真实手机拍摄与生活场景质感。",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-product-commercial-shotlist": {
+      "title": "电影级产品广告分镜",
+      "version": "e36226808809",
+      "source_sha256": "9989bf1f25482412dd1ab6e5c43a7eebdfdb15709f71fd72057a7850964c53ee",
+      "narrative": [
+        "按产品核心展示目标组织镜头，收束到清晰的产品主视觉。"
+      ],
+      "camera": [
+        "每个特写明确展示的实际材质或结构，不使用无目标的通用虚化；终帧构图参考与产品身份参考分开。"
+      ],
+      "art": {
+        "style": "精致产品广告美学，产品结构与品牌以真实参考为准。",
+        "lighting": "光线用于展示实际表面反射与材质层次。",
+        "rendering": ""
+      }
+    },
+    "seedance-template-dialogue-performance-beats": {
+      "title": "对白与表演节拍",
+      "version": "188afa780b5c",
+      "source_sha256": "7d1c4a3bac4a630812fdd2f81892e2bf003b540104bc6067b869194bf816d1f5",
+      "narrative": [
+        "对白与反应形成因果链：听见、理解、表情变化、身体回应，再进入下一状态。",
+        "把情绪落实到可见行为，保留前一反应的余韵；不得因此新增未授权台词或事实。"
+      ],
+      "camera": [
+        "根据当前说话者安排可读表演；只有实际发声人物跟随音频对口型，静音区间和其他人物保持闭唇；机位不遮挡关键反应。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-cinematic-narrative-short": {
+      "title": "电影级叙事短片",
+      "version": "862d65f703b9",
+      "source_sha256": "f0c5f6c4a122900c53828efacb1e62b501ecc38f61cacd8bf15fec0521dc3c3b",
+      "narrative": [
+        "按事件与情绪阶段组织段落，各幕承担不同信息量，不平均分配节奏。",
+        "反转通过可见画面兑现，情绪变化由原有事件产生；结尾回收已建立的信息。"
+      ],
+      "camera": [
+        "切换和镜头数量服从叙事节奏，保持人物、道具与空间连续。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "仅在剧情依据允许时，用光影变化支持情绪转折，不擅自改变时间与地点。",
+        "rendering": ""
+      }
+    },
+    "seedance-template-anime-style-lock": {
+      "title": "动漫与风格化画风固定",
+      "version": "43f482946ab5",
+      "source_sha256": "925d851f50640bd0299c19b56431cabe01e1ce5c304873fc9e14c11d2806cb01",
+      "narrative": [],
+      "camera": [
+        "角色与背景保持清晰层次，运动与遮挡中仍保持各角色固有色和识别点。"
+      ],
+      "art": {
+        "style": "统一选定的动漫画风，避免把二维手绘与三维写实混用。",
+        "lighting": "角色与背景保持明暗层次，阴影和高光遵守统一画风。",
+        "rendering": "明确线条、赛璐璐分层、透明中间影及不同表面的反射与粗糙度。"
+      }
+    },
+    "seedance-template-stop-motion-cadence": {
+      "title": "定格动画与步进节奏",
+      "version": "832bc87edca3",
+      "source_sha256": "c56fe8c69a3d2c52d65d440897a0573b6a064f68a8850bded071fa16c6dcb3fc",
+      "narrative": [],
+      "camera": [
+        "台面定格使用稳定的固定构图，主体姿势按步进变化，环境运动与主体节奏分别约束。"
+      ],
+      "art": {
+        "style": "手作定格质感，保留边缘与姿态的细微不齐。",
+        "lighting": "",
+        "rendering": "使用清晰的姿态停留与跳变；不以平滑插帧抹去步进特征；素材材质由项目选择。"
+      }
+    },
+    "seedance-template-process-transformation-montage": {
+      "title": "流程与变换蒙太奇",
+      "version": "2227a9e26613",
+      "source_sha256": "93bb5a1b6e3bd7f913ace65c5017878cb3dc4fd3a147718f4eb634ad57edd94f",
+      "narrative": [
+        "按过程的空间和因果顺序展示变化，保留必要步骤，终态仍有自然环境活动。"
+      ],
+      "camera": [
+        "变化前后保持机位、透视和结构锚点可对比；不要用无理由运镜抢走过程本身的注意力。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-combat-choreography": {
+      "title": "打斗编排",
+      "version": "2c102d59fda6",
+      "source_sha256": "ceed4aa3be1facb22c275e2ee4ed303525ad21018b0bee2ca98d66921291b02f",
+      "narrative": [
+        "动作以进攻、接触、防守和反击形成连续因果链，不做无结果的轮流摆姿势。"
+      ],
+      "camera": [
+        "镜头围绕实际接触点组织，保留动作可读性；保持重量、惯性、握持与武器数量连续，不无故瞬移。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-music-beat-sync-mv": {
+      "title": "音乐卡点 MV",
+      "version": "834fb91f046f",
+      "source_sha256": "841824d17f03051f1fc9a66e626f580042ad5213b2fc395d05d6dd69c865310e",
+      "narrative": [
+        "以实际音乐段落、强弱拍与能量变化规划动作和切点，结尾与已有音乐结尾对应。"
+      ],
+      "camera": [
+        "主角位置与伴舞权限清楚，伴舞不抢口型或遮挡主体；动作与剪切按实际音频节拍编排。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-time-freeze-rewind": {
+      "title": "时间冻结与倒放奇观",
+      "version": "93eb9cce220a",
+      "source_sha256": "0792866d47324e99a7b02c297c6b6960240e1be135a9d14bba85679adc4c06bb",
+      "narrative": [
+        "仅在用户故事明确包含时间冻结或倒放时，组织异常发生、冻结观察、回到起点与收束，不自动添加超能力情节。"
+      ],
+      "camera": [
+        "冻结与慢动作分开表达；若剧情允许倒放，清楚交代回到哪个已建立状态；保持观看细节所需的空间关系。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-storyboard-grid-to-video": {
+      "title": "分镜网格转视频",
+      "version": "f9497b725064",
+      "source_sha256": "8353d4df0275561e2379c31b84e547dad35fd975762d5cfaa85d858799ad8c78",
+      "narrative": [],
+      "camera": [
+        "按已确认分镜顺序和各格职责展开；角色参考只管身份，分镜参考决定已确认动作与布局；网格不作为画面内容。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-retro-found-footage": {
+      "title": "早年 DV 家庭录像",
+      "version": "96364a868dc2",
+      "source_sha256": "871bfd778c419d5a5917e48fc08050e12f395478ca6739a7edb9432ab1a37adc",
+      "narrative": [
+        "围绕一件日常小事自然展开，不强行添加大冲突或多重反转。"
+      ],
+      "camera": [
+        "使用自然手持、轻微失焦、曝光变化与偶发构图偏差，保持现场记录视角。"
+      ],
+      "art": {
+        "style": "早年家庭录像的生活感，避免过度商业化和电影式包装。",
+        "lighting": "",
+        "rendering": "保留所选摄录年代的成像特征，不能自动添加日期、字幕或品牌。"
+      }
+    },
+    "seedance-template-travel-city-walk": {
+      "title": "电影感旅行漫游",
+      "version": "395f62e12a82",
+      "source_sha256": "7e7eecf398c5d48a0c6ed8bd10c2cb1b11a5c7e98421545962088f3fc423bee7",
+      "narrative": [
+        "按地点与亲历事件组织旅行段落，短对白回应刚发生的事情。"
+      ],
+      "camera": [
+        "每个地点突出一个主要动作和明确运动方式，旅行者与装备保持连续。"
+      ],
+      "art": {
+        "style": "电影感旅行记录，克制的复古色调与真实生活细节。",
+        "lighting": "",
+        "rendering": "可采用细腻胶片颗粒与自然手持感，具体强度服从手动美术。"
+      }
+    },
+    "seedance-template-pet-animal": {
+      "title": "宠物动物当主角",
+      "version": "48b0ebf9e69f",
+      "source_sha256": "84d737ccb01e7dc705c7c5c1e05b026d67526cdd008dfb86ef347f1a01cf4257",
+      "narrative": [
+        "以动物自然行为逐拍推进，笑点来自真实互动和反应，不自动赋予人类语言或服装。"
+      ],
+      "camera": [
+        "保持同一只动物的数量与识别点，镜头跟随实际互动，近距离接触保持空间可读。"
+      ],
+      "art": {
+        "style": "自然生活记录感，保留动物真实毛发和行为特征。",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-car-vehicle": {
+      "title": "汽车与载具速度片",
+      "version": "2f3fa15890fb",
+      "source_sha256": "654ee1df316b42853733f9935b9d5bfd84554be3aa9774cd9251e97190852954",
+      "narrative": [
+        "以持续运动和实际路线变化推进，环境段落支持速度体验，不无故打断主运动。"
+      ],
+      "camera": [
+        "用低机位、相对运动和掠过的参照物表达速度，车轮、悬架和驾驶动作符合运动因果。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-fashion-lookbook": {
+      "title": "时尚 lookbook 与人像写真片",
+      "version": "c23ba84d2da4",
+      "source_sha256": "942ccb4928d20000c2665c7ce0ef72dcb751ec0fd11ddb50560c7290a144ff67",
+      "narrative": [
+        "以造型展示和轻微人物动作串联场景，围绕主推单品组织观看顺序。"
+      ],
+      "camera": [
+        "一段一个地点、景别和主要动作；人物与主推单品分别保持一致，镜头清楚交代佩戴或持物方式。"
+      ],
+      "art": {
+        "style": "时尚编辑摄影与人像写真方向，服装、配饰和人物身份以用户资产为准。",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-meme-comedy": {
+      "title": "反转结尾搞笑短片",
+      "version": "6a00df252c3a",
+      "source_sha256": "aa471156fe883f7a12a673b5606a2dfc51e7389081d3837bb4365cea27714f8c",
+      "narrative": [
+        "围绕可见笑点安排铺垫、误导、兑现和反应；反转需来自已有设定，不移植示例笑话。"
+      ],
+      "camera": [
+        "给旁观反应独立可读的节拍；荒诞事件用清晰可信的镜头空间呈现。"
+      ],
+      "art": {
+        "style": "一本正经的生活实拍质感可与荒诞内容形成反差。",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-horror-suspense": {
+      "title": "恐怖悬疑短片",
+      "version": "75548c0d4404",
+      "source_sha256": "ea6a9bc3bc9fd533c14e111231a2a4665cffa016768b06d737c3c662db5c9172",
+      "narrative": [
+        "从已有异常开始逐步增加可见变化，以信息揭示和人物反应建立悬念；不得擅自加入感染、怪物或暴力事实。"
+      ],
+      "camera": [
+        "每个镜头突出一个关键变化，保持角色识别和空间方向，利用反应镜头兑现恐惧。"
+      ],
+      "art": {
+        "style": "",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-3d-cartoon": {
+      "title": "3D 卡通角色短片",
+      "version": "60a6492efb74",
+      "source_sha256": "f055a9649915d7efa6efcf7a0b37abfeeeb3b8db4ffefd7a15e49b6156044072",
+      "narrative": [
+        "按地点与情绪目标组织段落，把情绪写成有因果的身体动作与反应。"
+      ],
+      "camera": [
+        "动作与揭晓时刻保持清晰可读，角色比例和表面识别点跨镜一致。"
+      ],
+      "art": {
+        "style": "统一的三维卡通动画风格，不照搬既有商业角色。",
+        "lighting": "",
+        "rendering": "有层次的表面材质、柔软毛发与可读的景深，避免塑料式同质表面。"
+      }
+    },
+    "seedance-template-epic-fantasy-scifi": {
+      "title": "奇幻科幻大场面",
+      "version": "ef139252e8c9",
+      "source_sha256": "33e690ca6fe2b6c04f028d24553e7445716a4eaee74f8fb8bcf8221d87b4e790",
+      "narrative": [
+        "围绕故事已有的一项主要奇观组织铺垫、揭示和后果，其余场面服务该事件。"
+      ],
+      "camera": [
+        "用环境参照和机位体现真实尺度；镜头路径明确经过的空间锚点，不把主体身份参考当作环境或动作参考。"
+      ],
+      "art": {
+        "style": "统一的奇幻或科幻世界视觉方向，写实与动画由项目决定。",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-sports-extreme": {
+      "title": "体育与极限运动",
+      "version": "b22c9da8ab72",
+      "source_sha256": "1a4cb1c160c6a2b5d861363715865f4d50a59fb4aa8b704ab2475f8ff03f33ff",
+      "narrative": [
+        "按动作起因、接触、受力与结果展开，反应不能早于触发它的实际接触。"
+      ],
+      "camera": [
+        "保持场地、器械和运动方向连续，清楚展示落地、压缩、回弹等实际运动阶段。"
+      ],
+      "art": {
+        "style": "现场运动记录质感，运动力度与物理表现可信。",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-game-ui-livestream": {
+      "title": "游戏实机录屏与直播叠层",
+      "version": "72a4ab62f58b",
+      "source_sha256": "ea51564e240dbab4b0af4e3bd8745deb092aff0a5b47b8b0b3e1814e015191d0",
+      "narrative": [
+        "按已有任务目标、行动、状态变化与结果组织事件；界面状态只反映真实已发生的事件。"
+      ],
+      "camera": [
+        "使用明确的游戏摄像机视角；界面与主播叠层位置稳定，不遮挡主要操作和信息。"
+      ],
+      "art": {
+        "style": "清晰的游戏实机录屏视觉，界面设计和内容以用户设定为准。",
+        "lighting": "",
+        "rendering": ""
+      }
+    },
+    "seedance-template-food-asmr": {
+      "title": "美食特写与吃播 ASMR",
+      "version": "7a3e5ce09ca6",
+      "source_sha256": "1e10391c11215ea3e528e0d0efd1e39f09e08044202f0b5517d2e3b73d0b5fee",
+      "narrative": [
+        "按实际制作步骤和食物状态变化推进，每步突出一项操作；入口、咀嚼与口播合理分开。"
+      ],
+      "camera": [
+        "特写清楚展示食材、工具接触和物理状态，声音对应具体动作，不用无关景别掩盖步骤。"
+      ],
+      "art": {
+        "style": "真实可感的食物材质与生活场景，写实或动画服从项目选择。",
+        "lighting": "光线清楚呈现食物表面状态、蒸汽与层次，不伪造品质或功效。",
+        "rendering": ""
+      }
+    }
+  }
+}

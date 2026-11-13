@@ -1,0 +1,10 @@
+import {productionReady} from './productionSource';
+import {useState} from 'react';
+type Obj=Record<string,any>;
+export function AssetExploration({project,busy,job,save,changed,notify}:{project:Obj;busy:boolean;job:(kind:string)=>void;save:()=>Promise<Obj>;changed:(p:Obj)=>void;notify:(text:string)=>void}){
+ const [chosen,setChosen]=useState<string[]>([]),[working,setWorking]=useState(false);
+ const rows:Obj[]=(project.asset_exploration?.candidates||[]).filter((r:Obj)=>!r.adopted);
+ const allowed=project.story_policy==='creative'&&project.story_promo?.settings?.allow_plot_additions!==false;
+ const adopt=async()=>{setWorking(true);try{const p=await save();const r=await fetch(`/api/projects/${p.id}/assets/exploration/adopt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({revision:p.revision,ids:chosen.filter(id=>rows.some(r=>r.id===id))})});const v=await r.json();if(!r.ok)throw Error(v.detail);changed(v);setChosen([]);notify('已创建选中的元素卡，可补充外观并生成提示词')}catch(e){notify((e as Error).message)}finally{setWorking(false)}};
+ return <section className="note"><div className="row wrap"><button disabled={busy||working||!productionReady(project)} onClick={()=>job('asset_explore')}>AI 补充额外元素</button><small>{allowed?'探索遗漏元素和额外美术设计，先选候选再采用。':'忠于故事：只探索剧本已有元素，不新增剧情事实。'}</small></div>{project.asset_exploration&&<details open><summary>额外元素候选 · {rows.length} 项</summary>{rows.length===0&&<p>暂无未采用候选，可重新探索。</p>}{rows.map(r=><label key={r.id} className="skill-choice"><input type="checkbox" checked={chosen.includes(r.id)} onChange={e=>setChosen(e.target.checked?[...chosen,r.id]:chosen.filter(id=>id!==r.id))}/><span><strong>{r.name} · {({character:'角色',scene:'场景',prop:'道具'} as Obj)[r.kind]} · {r.origin==='source'?'剧本查漏':'新增设计建议'}</strong><small>{r.description}</small><small>用途：{r.reason}</small>{r.evidence&&<small>原文依据：{r.evidence}</small>}</span></label>)}<button disabled={busy||working||!chosen.some(id=>rows.some(r=>r.id===id))} onClick={adopt}>采用所选候选</button><small>仅创建所选元素卡；已有资产、图片和剧本保留，不自动生成图片或添加镜头。</small></details>}</section>;
+}
